@@ -11,7 +11,7 @@ var pool = mysql.createPool({
   host: 'localhost',
   user: 'root',
   database: 'test',
-  password: 'rlatlgns123'
+  password: 'wnlswkd00@@3'
 });
 
 router.get('/', function (req, res, next) {
@@ -22,28 +22,6 @@ router.get('/', function (req, res, next) {
   res.render('index',{user_id : sess});
 });
 
-router.get('/products',function(req,res,next){
-  var sess = req.session.user_id;
-  var ok_admin = "tkarnr0926@gmail.com";
-  if(sess==null){
-    sess="no";
-  }
-  console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@USER ID /products: ', sess);
-
-  if(sess!=ok_admin) ok_admin = "no"
-
-  pool.getConnection(function (err,connection){
-    if (err) throw err;
-    var sqlForSelectList = "SELECT name, category, color, age, price, img_link1 FROM product";
-    connection.query(sqlForSelectList,function(err,rows){
-      num_rows = rows.length;
-      if(err) console.error("err : "+err);
-  //    console.log("rows : "+JSON.stringify(rows));
-      res.render('products',{user_id : sess, admin : ok_admin, row:rows, length : num_rows});
-      connection.release();
-    });
-  });
-});
 
 router.get('/login', function(req, res, next) {
   res.render('login', {session: req.session});
@@ -201,7 +179,7 @@ router.post('/single', function(req, res, next) {
       {
         console.error(err);
         console.log('No Product');
-        res.redirect('/board/products');
+        res.redirect('/board/index');
       }
       else//해당되는 제품이 존재할 경우
       {
@@ -384,17 +362,6 @@ router.post('/change_passwd', function(req, res, next) {
   }
 });
 
-
-router.get('/search', function(req, res, next){//검색기능..
-  var sess = req.session.user_id;
-  if(sess==null){
-    sess="no";
-  }
-  console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@USER ID /search: ', sess);
-
-  res.render('search',{user_id : sess});
-});
-
 router.get('/cart', function(req, res, next){
   var sess = req.session.user_id;
   var ok_admin = "tkarnr0926@gmail.com";
@@ -419,7 +386,7 @@ router.post('/cart', function(req, res, next) {
     connection.query(sqlForInsertBoard,datas, function(err,rows) {
       if(err) console.error("err : " + err);
     //  console.log("rows : " + JSON.stringify(rows));
-      res.redirect('/board/products');//you should change it
+      res.redirect('/board/index');//you should change it
       connection.release();
     });
   });
@@ -466,11 +433,11 @@ router.post('/Product_add', upload.array('img',2), function(req,res){
 
 
 
-  var datas = [name, category, "/",color, age,price, file_name_1, file_name_2];
+  var datas = [name, category, "/",color, age,price, file_name_1, file_name_2,"aa","bb"];
 
   console.log('upFile : '+datas);
   pool.getConnection(function (err,connection){
-    var sqlForInsertBoard = "insert into product(name, category, link,color, age,price,img_link1, img_link2) values(?, ?, ?, ?, ?, ?,?,?)";
+    var sqlForInsertBoard = "insert into product(name, category, link,color, age,price,img_link1, img_link2, description, review) values(?, ?, ?, ?, ?, ?,?,?,?,?)";
     connection.query(sqlForInsertBoard,datas,function(err, rows){
       if(err) console.error("err : "+err);
       console.log("rows : " + JSON.stringify(rows));
@@ -736,7 +703,7 @@ router.post('/p_single', function(req, res, next) {
       {
         console.error(err);
         console.log('No Product');
-        res.redirect('/board/products');
+        res.redirect('/board/index');
       }
       else//해당되는 제품이 존재할 경우
       {
@@ -777,7 +744,7 @@ router.get('/mycart',function(req,res,next){//카트에 담긴 물건 보여줌
       {
         console.error(err);
         //검색한 물품이 없을 때
-        res.redirect('/board/products');
+        res.redirect('/board/index');
       }
       else//해당되는 제품이 존재할 경우
       {
