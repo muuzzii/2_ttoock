@@ -836,7 +836,7 @@ router.get('/orderlist',function(req,res,next){//카트에 담긴 물건 보여�
       {
         console.error(err);
         //검색한 물품이 없을 때
-        res.redirect('/board/products');
+        res.redirect('/board/index');
       }
       else//해당되는 제품이 존재할 경우
       {
@@ -851,4 +851,40 @@ router.get('/orderlist',function(req,res,next){//카트에 담긴 물건 보여�
     });
   });
 });
+router.get('/Recommend',function(req,res,next){//카트에 담긴 물건 보여줌
+  var sess = req.session.user_id;
+  var ok_admin = "tkarnr0926@gmail.com";
+  var my_age = 0;
+  if(sess==null){
+    sess="no";
+  }
+
+  if(sess!=ok_admin) ok_admin = "no"
+//  res.render('mycart',{user_id : sess});
+  //var name = req.body.Search;
+  //var datas = [name];//db에 등록한 상품 중에서 있는지 봐야겠네
+  pool.getConnection(function (err,connection){
+    if (err) throw err;
+    var sqlForSelectList = "SELECT age FROM board where email=?";
+    connection.query(sqlForSelectList,sess,function(err,rows){
+      my_age = rows[0].age;
+      console.log("rows : "+JSON.stringify(rows));
+      console.log("age : "+my_age);
+
+      if(err) console.error("err : "+err);
+  //    console.log("rows : "+JSON.stringify(rows));
+    });
+    sqlForSelectList = "SELECT name, age, price, img_link1 FROM product";
+    connection.query(sqlForSelectList,function(err,result){
+      num_rows = result.length;
+      if(err) console.error("err : "+err);
+      console.log("rows : "+JSON.stringify(result));
+      res.render('Recommend',{user_id : sess, admin : ok_admin, row:result, length : num_rows, my_age : my_age});
+      connection.release();
+    });
+  });
+
+});
+
+
 module.exports = router;
