@@ -197,49 +197,39 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<li><a href="index">Home</a></li>
 						<!-- Mega Menu -->
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b class="caret"></b></a>
-							<ul class="dropdown-menu multi-column columns-3">
-								<div class="row">
-									<div class="col-sm-3">
-										<ul class="multi-column-dropdown">
-											<h6>Mobiles</h6>
-											<li><a href="products">Mobile Phones</a></li>
-											<li><a href="products">Mp3 Players <span>New</span></a></li>
-											<li><a href="products">Popular Models</a></li>
-											<li><a href="products">All Tablets<span>New</span></a></li>
-										</ul>
-									</div>
-									<div class="col-sm-3">
-										<ul class="multi-column-dropdown">
-											<h6>Accessories</h6>
-											<li><a href="products1">Laptop</a></li>
-											<li><a href="products1">Desktop</a></li>
-											<li><a href="products1">Wearables <span>New</span></a></li>
-											<li><a href="products1"><i>Summer Store</i></a></li>
-										</ul>
-									</div>
-									<div class="col-sm-2">
-										<ul class="multi-column-dropdown">
-											<h6>Home</h6>
-											<li><a href="products2">Tv</a></li>
-											<li><a href="products2">Camera</a></li>
-											<li><a href="products2">AC</a></li>
-											<li><a href="products2">Grinders</a></li>
-										</ul>
-									</div>
-									<div class="col-sm-4">
-										<div class="w3ls_products_pos">
-											<h4>30%<i>Off/-</i></h4>
-											<img src="/images/1.jpg" alt=" " class="img-responsive" />
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Products<b class="caret"></b></a>
+								<ul class="dropdown-menu multi-column columns-3">
+									<div class="row">
+										<div class="col-sm-3">
+											<ul class="multi-column-dropdown">
+												<h6>Mobile</h6>
+												<li><a href="products_phone">Phones</a></li>
+											</ul>
 										</div>
+										<div class="col-sm-3">
+											<ul class="multi-column-dropdown">
+												<h6>Home</h6>
+												<li><a href="products_home">Home</a></li>
+												<li><a href="products_pc">PC</a></li>
+												<li><a href="products_speaker">Speaker <span>New</span></a></li>
+											</ul>
+										</div>
+										<div class="col-sm-2">
+											<ul class="multi-column-dropdown">
+												<h6>Others</h6>
+												<li><a href="products_acc">Acc</a></li>
+											</ul>
+										</div>
+										<div class="clearfix"></div>
 									</div>
-									<div class="clearfix"></div>
-								</div>
-							</ul>
-						</li>
+								</ul>
+							</li>
 						<li><a href="about">About Us</a></li>
+
 						<li><a href="mypage">My page</a></li>
+
 						<li><a href="mail">Mail Us</a></li>
+
 						<% if (admin != "no"){ %>
 							<li class="w3pages"><a href="#" class="dropdown-toggle act" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Management <span class="caret"></span></a>
 								<ul class="dropdown-menu">
@@ -249,6 +239,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								</ul>
 							</li>
 						<%} %>
+
 					</ul>
 				</div>
 			</nav>
@@ -352,12 +343,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									var divUpd = $(this).parent().find('.value1'), newVal = parseInt(divUpd.text(), 10)+1;
 									divUpd.text(newVal);
 								});
+
 								$('.value-minus1').on('click', function(){
 									var divUpd = $(this).parent().find('.value1'), newVal = parseInt(divUpd.text(), 10)-1;
 									if(newVal>=1) divUpd.text(newVal);
 								});
 								</script>
 							<!--quantity-->
+
 					</div>
 					<div class="clearfix"> </div>
 				</div>
@@ -380,6 +373,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 					<div class="clearfix"> </div>
 				</div>
+
 				<div class="simpleCart_shelfItem">
 					 <form action="/board/cart" method="post">
 							<input type="hidden" name="item" value = "<%=name%>">
@@ -389,6 +383,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							</div>
 					 </form>
 				</div>
+
 			</div>
 			<div class="clearfix"> </div>
 		</div>
@@ -402,17 +397,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>Reviews</span></li>
 					</ul>
 					<div class="tab-1 resp-tab-content additional_info_grid" aria-labelledby="tab_item-0">
-						<h3>The Best 3GB RAM Mobile Phone</h3>
-						<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-							eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-							Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
-							odit aut fugit, sed quia consequuntur magni dolores eos qui
-							ratione voluptatem sequi nesciunt.Ut enim ad minima veniam, quis nostrum
-							exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea
-							commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate
-							velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat
-							quo voluptas nulla pariatur.</p>
+						<h3><%=name%></h3>
+						<p><%=description%></p>
 					</div>
+
 					<div class="tab-2 resp-tab-content additional_info_grid" aria-labelledby="tab_item-1">
 						<h4>(2) Reviews</h4>
 						<div class="additional_info_sub_grids">
@@ -637,6 +625,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 				</li>
 			</ul>
+
 				<script type="text/javascript">
 					$(window).load(function() {
 						$("#flexiselDemo2").flexisel({
@@ -661,6 +650,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								}
 							}
 						});
+
 					});
 				</script>
 				<script type="text/javascript" src="/js/jquery.flexisel.js"></script>
@@ -945,9 +935,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<h3>Contact</h3>
 					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
 					<ul class="address">
-						<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>1234k Avenue, 4th block, <span>New York City.</span></li>
-						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">info@example.com</a></li>
-						<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 567</li>
+						<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Saebit<span>Seoul City.</span></li>
+						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:tkarnr0926@gmail.com">tkarnr0926@gmail.com</a></li>
+						<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+8251661544</li>
 					</ul>
 				</div>
 				<div class="col-md-3 w3_footer_grid">
@@ -955,26 +945,23 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<ul class="info">
 						<li><a href="about">About Us</a></li>
 						<li><a href="mail">Contact Us</a></li>
-						<li><a href="codes">Short Codes</a></li>
 						<li><a href="faq">FAQ's</a></li>
-						<li><a href="products">Special Products</a></li>
 					</ul>
 				</div>
 				<div class="col-md-3 w3_footer_grid">
 					<h3>Category</h3>
 					<ul class="info">
-						<li><a href="products">Mobiles</a></li>
-						<li><a href="products1">Laptops</a></li>
-						<li><a href="products">Purifiers</a></li>
-						<li><a href="products1">Wearables</a></li>
-						<li><a href="products2">Kitchen</a></li>
+						<li><a href="products_home">HOME</a></li>
+						<li><a href="products_pc">PC</a></li>
+						<li><a href="products_phone">PHONE</a></li>
+						<li><a href="products_speaker">SPEAKER</a></li>
+						<li><a href="products_acc">ACC</a></li>
 					</ul>
 				</div>
 				<div class="col-md-3 w3_footer_grid">
 					<h3>Profile</h3>
 					<ul class="info">
 						<li><a href="index">Home</a></li>
-						<li><a href="products">Today's Deals</a></li>
 					</ul>
 					<h4>Follow Us</h4>
 					<div class="agileits_social_button">
@@ -1005,10 +992,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<script src="/js/minicart.js"></script>
 	<script>
         w3ls.render();
+
         w3ls.cart.on('w3sb_checkout', function (evt) {
         	var items, len, i;
+
         	if (this.subtotal() > 0) {
         		items = this.items();
+
         		for (i = 0, len = items.length; i < len; i++) {
         		}
         	}
